@@ -24,7 +24,7 @@
  *
  */
 function getComposition(f, g) {
-  return function (x) {
+  return function curry(x) {
     return f(g(x));
   };
 }
@@ -47,7 +47,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
-  return function (num) {
+  return function power(num) {
     return num ** exponent;
   };
 }
@@ -67,7 +67,7 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom(...args) {
-  return function (x) {
+  return function polynom(x) {
     if (args.length === 0) return null;
     let result = 0;
     for (let i = args.length - 1; i >= 0; i -= 1) {
@@ -94,7 +94,7 @@ function getPolynom(...args) {
  */
 function memoize(func) {
   let cache;
-  return function () {
+  return function memo() {
     if (cache) return cache;
     cache = func();
     return cache;
